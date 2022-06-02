@@ -1,0 +1,7 @@
+br\edu\ifsul\modelo\Exame.class
+br\edu\ifsul\modelo\Receituario.class
+br\edu\ifsul\modelo\Especialidade.class
+br\edu\ifsul\modelo\Medico.class
+br\edu\ifsul\modelo\Medicamento.class
+br\edu\ifsul\modelo\Paciente.class
+br\edu\ifsul\modelo\Consulta.class
