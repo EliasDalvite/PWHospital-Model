@@ -57,9 +57,9 @@ public class Paciente implements Serializable{
     @Column(name = "sexo", nullable = false, length = 10)
     private String sexo;
     
-    @Length(max = 500, message = "O historico nao pode ter mais que {max} caracteres")
+    @Length(message = "O histórico deve ser informado!")
     @NotBlank(message = "O historico nao pode ficar em branco")
-    @Column(name = "historico", nullable = false, length = 500)
+    @Column(name = "historico", nullable = false)
     private String historico;
     
     @NotNull(message = "O peso deve ser informado")

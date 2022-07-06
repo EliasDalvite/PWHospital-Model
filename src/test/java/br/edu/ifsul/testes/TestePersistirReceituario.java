@@ -29,7 +29,7 @@ public class TestePersistirReceituario {
         calendar.setTime(sdf.parse("30-04-2025"));
         
         Receituario r = new Receituario();
-        r.setConsulta(em.find(Consulta.class, 3));
+        r.setConsulta(em.find(Consulta.class, 5));
         r.setPosologia("Adulto: 10 a 15mg/dose, intervalos de 4 a 6 horas, não exceda 50-75mg em 24 horas. Crianças: Consultar o médico antes do uso.");
         r.setValidade(calendar);
                 

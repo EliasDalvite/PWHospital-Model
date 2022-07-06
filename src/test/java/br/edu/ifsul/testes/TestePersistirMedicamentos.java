@@ -21,7 +21,7 @@ public class TestePersistirMedicamentos {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("Hospital-ModelPU");
         EntityManager em = emf.createEntityManager();
         
-        Receituario r = em.find(Receituario.class, 7);
+        Receituario r = em.find(Receituario.class, 8);
         Medicamento m = em.find(Medicamento.class, 1);
         
         r.getMedicamentos().add(m);

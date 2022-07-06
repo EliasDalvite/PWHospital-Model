@@ -24,7 +24,7 @@ public class TestePersistirExame {
         
         Exame e = new Exame();
         e.setNome("Hemograma");
-        e.setConsulta(em.find(Consulta.class, 3));
+        e.setConsulta(em.find(Consulta.class, 5));
         e.setDescricao("Descricao Hemograma");
                 
         em.getTransaction().begin();

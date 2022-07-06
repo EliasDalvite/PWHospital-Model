@@ -41,7 +41,7 @@ public class Consulta implements Serializable{
     private Integer id;
     
     @Temporal(TemporalType.DATE)
-    @NotBlank(message = "A data nao pode ficar em branco")
+    @NotNull(message = "A data deve ser informada")
     @Column(name = "data", nullable = false)
     private Calendar data;
     
@@ -54,7 +54,7 @@ public class Consulta implements Serializable{
     private String posconsulta;
     
     @Temporal(TemporalType.DATE)
-    @NotBlank(message = "A hora nao pode ficar em branco")
+    @NotNull(message = "A hora deve ser informada")
     @Column(name = "hora", nullable = false)
     private Calendar hora;  
     
@@ -63,8 +63,13 @@ public class Consulta implements Serializable{
     @JoinColumn(name = "paciente", referencedColumnName = "id", nullable = false)
     private Paciente paciente;
     
+    @ManyToOne
+    @NotNull(message = "O Medico deve ser informado")
+    @JoinColumn(name = "medico", referencedColumnName = "crm", nullable = false)
+    private Medico medico;
+    
     @OneToMany(mappedBy = "consulta", cascade = CascadeType.ALL, 
-            orphanRemoval = true, fetch = FetchType.LAZY)
+            orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Exame> exames = new ArrayList<>();
     
     @OneToMany(mappedBy = "consulta", cascade = CascadeType.ALL, 
@@ -75,6 +80,15 @@ public class Consulta implements Serializable{
         
     }
 
+     public void adicionarExame(Exame obj){
+        obj.setConsulta(this);
+        this.exames.add(obj);
+    }
+    
+    public void removerExame(int index){
+        this.exames.remove(index);
+    }
+    
     public Integer getId() {
         return id;
     }
@@ -162,5 +176,13 @@ public class Consulta implements Serializable{
 
     public void setReceituarios(List<Receituario> receituarios) {
         this.receituarios = receituarios;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
     }
 }
