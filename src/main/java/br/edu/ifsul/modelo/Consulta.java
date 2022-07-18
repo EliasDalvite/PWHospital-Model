@@ -53,9 +53,8 @@ public class Consulta implements Serializable{
     @Column(name = "posconsulta", nullable = false)
     private String posconsulta;
     
-    @Temporal(TemporalType.DATE)
     @NotNull(message = "A hora deve ser informada")
-    @Column(name = "hora", nullable = false)
+    @Column(name = "hora", nullable = false, columnDefinition = "time")
     private Calendar hora;  
     
     @ManyToOne
@@ -69,7 +68,7 @@ public class Consulta implements Serializable{
     private Medico medico;
     
     @OneToMany(mappedBy = "consulta", cascade = CascadeType.ALL, 
-            orphanRemoval = true, fetch = FetchType.EAGER)
+            orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Exame> exames = new ArrayList<>();
     
     @OneToMany(mappedBy = "consulta", cascade = CascadeType.ALL, 
@@ -79,14 +78,23 @@ public class Consulta implements Serializable{
     public Consulta(){
         
     }
-
-     public void adicionarExame(Exame obj){
+    
+    public void adicionarExame(Exame obj){
         obj.setConsulta(this);
         this.exames.add(obj);
     }
     
     public void removerExame(int index){
         this.exames.remove(index);
+    }
+    
+    public void adicionarReceituario(Receituario obj){
+        obj.setConsulta(this);
+        this.receituarios.add(obj);
+    }
+    
+    public void removerReceituario(int index){
+        this.receituarios.remove(index);
     }
     
     public Integer getId() {

@@ -12,10 +12,12 @@ import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 //import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -46,14 +48,13 @@ public class Receituario implements Serializable{
     
     @Temporal(TemporalType.DATE)
     @NotNull(message = "A validade deve ser informada")
-    @NotBlank(message = "A validade nao pode ficar em branco")
     @Column(name = "validade", nullable = false)
     private Calendar validade;
     
-    @ManyToMany
-    /*@JoinTable(name = "medicamento_receituario",
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "medicamentos",
             joinColumns = @JoinColumn(name = "posologia", referencedColumnName = "posologia", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "medicamento", referencedColumnName = "nome", nullable = false))*/
+            inverseJoinColumns = @JoinColumn(name = "medicamento", referencedColumnName = "nome", nullable = false))
     private Set<Medicamento> medicamentos = new HashSet<>();
     
     @ManyToOne

@@ -1,8 +1,11 @@
 br\edu\ifsul\testes\TestePersistirEspecialidade.class
 br\edu\ifsul\testes\TestePersistirExame.class
 br\edu\ifsul\testes\TestePersistirMedico.class
+br\edu\ifsul\testes\TestePersistirPermissao.class
+br\edu\ifsul\testes\TestePersistirUsuario.class
 br\edu\ifsul\testes\TestePersistirConsulta.class
 br\edu\ifsul\testes\TestePersistirMedicamento.class
 br\edu\ifsul\testes\TestePersistirReceituario.class
 br\edu\ifsul\testes\TestePersistirMedicamentos.class
 br\edu\ifsul\testes\TestePersistirPaciente.class
+br\edu\ifsul\testes\TestePersistirPermissoes.class
